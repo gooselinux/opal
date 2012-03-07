@@ -1,0 +1,9 @@
+--- opal-3.6.6/plugins/video/H.261-vic/vic/config.h~	2009-09-22 02:57:52.000000000 +0200
++++ opal-3.6.6/plugins/video/H.261-vic/vic/config.h	2010-06-21 11:55:16.709265167 +0200
+@@ -99,5 +99,5 @@
+       ((char*)(left))[2] = ((const char*)(right))[1], \
+       ((char*)(left))[3] = ((const char*)(right))[0]
+ #else
+-  #define SWAP32(left,right) *(long*)(left)=*(const long*)(right)
++  #define SWAP32(left,right) memcpy ((left), (right), 4)
+ #endif

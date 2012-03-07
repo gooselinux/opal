@@ -1,0 +1,42 @@
+--- opal-3.6.6/configure~	2009-09-22 02:58:43.000000000 +0200
++++ opal-3.6.6/configure	2010-06-21 21:09:59.463062782 +0200
+@@ -4453,10 +4453,6 @@
+ fi
+ 
+ 
+-cat >>confdefs.h <<_ACEOF
+-#define OPAL_PLUGIN_DIR "${EXPANDED_PLUGIN_DIR}"
+-_ACEOF
+-
+ { echo "$as_me:$LINENO: result: ${EXPANDED_PLUGIN_DIR}" >&5
+ echo "${ECHO_T}${EXPANDED_PLUGIN_DIR}" >&6; }
+ 
+--- opal-3.6.6/configure.ac~	2009-09-22 02:58:43.000000000 +0200
++++ opal-3.6.6/configure.ac	2010-06-21 17:51:35.145868314 +0200
+@@ -150,7 +150,6 @@
+   EXPANDED_PLUGIN_DIR=`echo ${EXPANDED_PLUGIN_DIR} | sed s#\\${exec_prefix}#${exec_prefix}#`
+ fi
+ 
+-AC_DEFINE_UNQUOTED([OPAL_PLUGIN_DIR], ["${EXPANDED_PLUGIN_DIR}"], [Default plugin dir])
+ AC_MSG_RESULT([${EXPANDED_PLUGIN_DIR}])
+ 
+ 
+--- opal-3.6.6/include/opal/buildopts.h.in~	2009-09-22 02:58:02.000000000 +0200
++++ opal-3.6.6/include/opal/buildopts.h.in	2010-06-21 16:44:50.840286008 +0200
+@@ -102,7 +102,15 @@
+   #define  OPAL_PTLIB_CONFIG_FILE P_CONFIG_FILE
+ #endif
+ 
+-#undef  OPAL_PLUGIN_DIR
++/* This only works on Fedora/RHEL 
++ * It is required to avoid multilib conflicts */
++#if __WORDSIZE == 64
++#define  OPAL_PLUGIN_DIR "/usr/lib64/opal-" OPAL_VERSION
++#elif __WORDSIZE == 32
++#define  OPAL_PLUGIN_DIR "/usr/lib/opal-" OPAL_VERSION
++#else
++#error "define a proper libdir"
++#endif
+ 
+ /////////////////////////////////////////////////
+ //

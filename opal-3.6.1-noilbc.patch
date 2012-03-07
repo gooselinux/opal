@@ -1,0 +1,11 @@
+diff -up opal-3.6.1/Makefile.in.BAD opal-3.6.1/Makefile.in
+--- opal-3.6.1/Makefile.in.BAD	2009-04-21 13:47:04.000000000 -0400
++++ opal-3.6.1/Makefile.in	2009-04-21 13:47:08.000000000 -0400
+@@ -361,7 +361,6 @@ SOURCES += $(OPAL_SRCDIR)/codec/g711code
+            $(OPAL_SRCDIR)/codec/g729mf.cxx \
+            $(OPAL_SRCDIR)/codec/gsm0610mf.cxx \
+            $(OPAL_SRCDIR)/codec/gsmamrmf.cxx \
+-           $(OPAL_SRCDIR)/codec/iLBCmf.cxx \
+            $(OPAL_SRCDIR)/codec/t38mf.cxx \
+            $(OPAL_SRCDIR)/codec/rfc2833.cxx \
+            $(OPAL_SRCDIR)/codec/opalwavfile.cxx \
