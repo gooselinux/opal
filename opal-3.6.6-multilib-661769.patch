@@ -1,0 +1,13 @@
+--- opal-3.6.6/include/opal/buildopts.h.in~
++++ opal-3.6.6/include/opal/buildopts.h.in
+@@ -32,7 +32,9 @@
+ #define OPAL_BUILDOPTS_H
+ 
+ #include <ptbuildopts.h>
+-
++/* This only works on Fedora/RHEL
++ * It is required to avoid multilib conflicts */
++#include <sys/types.h>
+ /////////////////////////////////////////////////
+ //
+ // OPAL Version 
